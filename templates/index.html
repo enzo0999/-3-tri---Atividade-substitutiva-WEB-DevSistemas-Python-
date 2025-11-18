@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Grupo — {{ team.name }}{% endblock %}
+
+
+{% block content %}
+<section class="card">
+<h1>Bem-vindo ao {{ team.name }}</h1>
+<p style="text-align:center;">Sede: {{ team.city }} • <strong>{{ projects_count }}</strong> projetos em destaque</p>
+
+
+<h2>Equipe</h2>
+<div class="team-grid">
+{% for member in team.members %}
+<div class="team-member">
+<img src="https://via.placeholder.com/120" alt="{{ member.name }}">
+<p><strong>{{ member.name }}</strong><br>Idade: {{ member.age }}<br>Função: {{ member.role }}</p>
+</div>
+{% endfor %}
+</div>
+</section>
+
+
+<section class="card">
+<h2>Sobre o Grupo</h2>
+<p>Nos formamos em 2025 e temos trabalhado em projetos educacionais de robótica, participando de competições e eventos.</p>
+</section>
+
+
+<section class="card">
+<a class="button" href="{{ url_for('go_to_projects') }}">Ver Projetos (usa redirect)</a>
+</section>
+{% endblock %}
